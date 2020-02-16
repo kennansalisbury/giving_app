@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [1, 255],
-          msg: 'Your first name must be filled in' //message if validate condition not met
+          msg: 'Please provide a first name' //message if validate condition not met
         }
       }
     },
@@ -19,12 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isEmail: {
-          msg: 'Please give a valid email address 😱'
+          msg: 'Please provide a valid email address.'
         }
       }
     },
-    username: DataTypes.STRING,
-    birthdate: DataTypes.DATE,
     password: {
       type: DataTypes.STRING,
       validate: {
@@ -34,16 +32,15 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    photoURL: {
-      type: DataTypes.STRING,
-      validate: {
-        isUrl: {
-          msg: 'Need a url'
-        }
-      }
+    profilePhoto:DataTypes.STRING,
+    isDonor: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     },
-    bio: DataTypes.TEXT,
-    admin: DataTypes.BOOLEAN
+    organizationid: {
+      type: DataTypes.INTEGER,
+      defaultValue: null
+    }
   }, {
     hooks: {
       beforeCreate: pendingUser => {
@@ -59,7 +56,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   user.associate = function(models) {
-    // associations can be defined here
+    models.user.belongsToMany(models.program, {through: 'users_programs'})
+    models.user.hasMany(models.giverItem)
+    models.user.belongsTo(models.organization)
   };
 
   user.prototype.validPassword = function(typedInPassword) {
