@@ -36,7 +36,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   organization.associate = function(models) {
     models.organization.hasMany(models.program)
-    models.organization.hasMany(models.user)
   };
   return organization;
 };

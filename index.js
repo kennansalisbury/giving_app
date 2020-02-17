@@ -16,15 +16,15 @@ app.use(express.json()) // Accept data from AJAX call
 
 // Controllers
 app.use('/auth', require('./controllers/auth'))
-app.use('/programs', expressJwt({ // makes private
-    secret: process.env.JWT_SECRET 
-  }), require('./controllers/programs'))
-app.use('/items', expressJwt({ // makes private
-    secret: process.env.JWT_SECRET 
-  }), require('./controllers/items'))
-app.use('/account', expressJwt({ // makes private
-    secret: process.env.JWT_SECRET 
-  }), require('./controllers/account'))
+// app.use('/programs', expressJwt({ // makes private
+//     secret: process.env.JWT_SECRET 
+//   }), require('./controllers/programs'))
+// app.use('/items', expressJwt({ // makes private
+//     secret: process.env.JWT_SECRET 
+//   }), require('./controllers/items'))
+// app.use('/account', expressJwt({ // makes private
+//     secret: process.env.JWT_SECRET 
+//   }), require('./controllers/account'))
 
 //Catch-all/error route
 app.get('*', (req, res) => {

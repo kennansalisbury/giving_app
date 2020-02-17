@@ -1,77 +1,74 @@
-//Create express router object
+require('dotenv').config()
 let router = require('express').Router()
-
 let db = require('../models')
-
-let passport = require('../config/passportConfig')
+let jwt = require('jsonwebtoken')
 
 // Define routes
-router.get('/login', (req, res) => {
-    res.render('auth/login')
+
+// POST /auth/login (find and validate user; send token)
+router.post('/login', (req, res) => {
+    //Find the user, check if existing
+    db.user.findOne({
+      where: {email: req.body.email}
+    }).then(user => {
+      //make sure user exists and has a password
+      if(!user || !user.password) {
+        return res.status(404).send({ message: 'User not found' })
+      }
+      
+      //if user exists, check password
+      if(!user.validPassword(req.body.password)) {
+        return res.status(401).send({ message: 'Invalid credentials' })
+      }
+  
+      //good user - issue token
+      let token = jwt.sign(user.toJSON(), process.env.JWT_SECRET, {
+        expiresIn: 60 * 60 * 8
+      })
+      res.send( {token} )
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(503).send({message: 'Database error' })
+    })
+  })
+
+
+// POST /auth/signup (create new user; send token)
+router.post('/signup', (req, res) => {
+    db.user.findOrCreate({
+        where: {email: req.body.email},
+        defaults: req.body
+    })
+    .then(([user, wasCreated]) => { //confirms if new user was created or not
+        if(wasCreated) {
+            // this is the intended user action
+            //Make new user a token
+            let token = jwt.sign(user.toJSON(), process.env.JWT_SECRET, {
+            expiresIn: 60 * 60  //do shorter for dev/testing purposes, longer for deployment
+          })
+          //Send token
+          res.send( {token} )
+        } else {
+            //the user already has an account
+            return res.status(409).send({message: 'Email address already in use.'})
+        }
+    })
+    .catch(err => {
+        //Print out a general error to the terminal
+        console.log('Error when creating a user', err)
+
+        //check for validation errors (okay for user to see)
+        if(err.name === 'ValidationError') {
+            console.log(err)
+            res.status(406).send({ message: 'Validation error!' })
+          }
+          else {
+            console.log('Error creating user', err)
+            res.status(500).send({message: 'Error creating user' })
+          }
+    })
+    
 })
-
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/profile',
-    successFlash: 'Yay, we logged in!',
-    failureRedirect: '/auth/login',
-    failureFlash: 'Invalid credentials'
-
-}))
-
-router.get('/signup', (req, res) => {
-    res.render('auth/signup', {data: {}})
-})
-
-router.post('/signup', (req, res, next) => {
-    if(req.body.password !== req.body.ver_password) {
-        req.flash('error', 'Passwords do not match!') //first argument is type of message, second argument is the message
-        res.render('auth/signup', {data: req.body, alerts: req.flash()}) //pass through the existing form information
-    } else {
-        db.user.findOrCreate({
-            where: {email: req.body.email},
-            defaults: req.body
-        })
-        .then(([user, wasCreated]) => { //confirms if new user was created or not
-            if(wasCreated) {
-                // this is the intended user action
-                // automatically log in the user to their newly created account
-                passport.authenticate('local', {
-                    successRedirect: '/profile',
-                    successFlash: 'Yay, we logged in!',
-                    failureRedirect: '/auth/login',
-                    failureFlash: 'this should not happen'
-                }) (req, res, next)
-            } else {
-                //the user already has an account
-                req.flash('error', 'Account already exists - go to the login page')
-                res.redirect('/auth/login')
-            }
-        })
-        .catch(err => {
-            //Print out a general error to the terminal
-            console.log('Error when creating a user', err)
-
-            //check for validation errors (okay for user to see)
-            if(err.errors) {
-                err.errors.forEach(e => {
-                    if(e.type === 'Validation error') {
-                        req.flash('error', e.message)
-                    }
-                })
-            } else {
-                req.flash('error', 'something wrong happened')
-            }
-            res.redirect('/auth/signup')
-        })
-    }
-})
-
-router.get('/logout', (req, res) => {
-    req.logout() // Throw away session data of logged in user
-    req.flash('success', 'Goodbye!')
-    res.redirect('/')
-})
-
-
 // Export the router object so we can include it in other files
 module.exports = router

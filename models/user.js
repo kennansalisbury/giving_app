@@ -58,7 +58,6 @@ module.exports = (sequelize, DataTypes) => {
   user.associate = function(models) {
     models.user.belongsToMany(models.program, {through: 'users_programs'})
     models.user.hasMany(models.giverItem)
-    models.user.belongsTo(models.organization)
   };
 
   user.prototype.validPassword = function(typedInPassword) {
@@ -66,6 +65,13 @@ module.exports = (sequelize, DataTypes) => {
     let correctPassword = bcrypt.compareSync(typedInPassword, this.password)
     // return result of that comparison
     return correctPassword
+  }
+
+  user.prototype.toJSON =  function () {
+    var values = Object.assign({}, this.get());
+  
+    delete values.password;
+    return values;
   }
 
   return user;
