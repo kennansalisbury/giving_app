@@ -5,15 +5,28 @@ let jwt = require('jsonwebtoken')
 
 //get all data for donor needed at app level
 router.get('/:userid', (req, res) => {
-    //find all programs, include programItems, organization, giverItems
+    //find all programs
+        //include organization & programItem details
+        //get all giveritems num_purchased
+        //send all giveritem details only for current user
     let data = []
     db.program.findAll({
         include: [
             db.organization,
-            db.programItem
+            {
+                model: db.programItem,
+                include: [
+                    {
+                        model: db.giverItem,
+                        attributes: ['num_purchased']
+                    }
+                    
+                ]
+            }
         ]
     })
     .then(programs => {
+   
         data.push({programs: programs})
         db.giverItem.findAll({
             where: {userId: req.params.userid}
