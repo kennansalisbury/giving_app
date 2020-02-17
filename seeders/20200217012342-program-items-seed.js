@@ -7,7 +7,7 @@ module.exports = {
         goal_num: 500,
         url: 'https://www.amazon.com/s?k=diapers',
         description: 'all sizes',
-        programId: 1,
+        programId: 10,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -16,7 +16,7 @@ module.exports = {
         goal_num: 500,
         url: 'https://www.amazon.com/s?k=babywipes',
         description: 'non-scented',
-        programId: 1,
+        programId: 10,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -25,7 +25,7 @@ module.exports = {
         goal_num: 200,
         url: 'https://www.amazon.com/s?k=babypowder',
         description: '12oz bottles',
-        programId: 1,
+        programId: 10,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -34,7 +34,7 @@ module.exports = {
         goal_num: 1000,
         url: 'https://www.amazon.com/s?k=pencils',
         description: 'regular no. 2',
-        programId: 2,
+        programId: 11,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -43,7 +43,7 @@ module.exports = {
         goal_num: 300,
         url: 'https://www.amazon.com/s?k=expo+markers',
         description: 'all colors and sizes',
-        programId: 2,
+        programId: 11,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -52,7 +52,7 @@ module.exports = {
         goal_num: 600,
         url: 'https://www.amazon.com/s?k=notebooks',
         description: 'lined paper',
-        programId: 2,
+        programId: 11,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -61,7 +61,7 @@ module.exports = {
         goal_num: 600,
         url: 'https://www.amazon.com/s?k=socks',
         description: 'women and men, size medium',
-        programId: 3,
+        programId: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -70,7 +70,7 @@ module.exports = {
         goal_num: 600,
         url: 'https://www.amazon.com/s?k=child+coat',
         description: 'girl or boy size sm, m, l',
-        programId: 3,
+        programId: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -79,7 +79,7 @@ module.exports = {
         goal_num: 200,
         url: 'https://www.amazon.com/s?k=womens+shorts',
         description: 'all sizes',
-        programId: 4,
+        programId: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -88,7 +88,7 @@ module.exports = {
         goal_num: 200,
         url: 'https://www.amazon.com/s?k=mens+shorts',
         description: 'all sizes',
-        programId: 4,
+        programId: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -97,7 +97,7 @@ module.exports = {
         goal_num: 500,
         url: 'https://www.amazon.com/s?k=sandals',
         description: 'all sizes',
-        programId: 4,
+        programId: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -106,7 +106,7 @@ module.exports = {
         goal_num: 1000,
         url: 'https://www.amazon.com/s?k=tshirts',
         description: 'all sizes, men and women',
-        programId: 4,
+        programId: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       }
