@@ -6,7 +6,7 @@ module.exports = {
       return queryInterface.bulkInsert('giverItems', [
         {
         userId: 1,
-        programItemId: 25,
+        programItemId: 1,
         num_purchased: 10,
         dollars_spent: 100,
         createdAt: new Date(),
@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         userId: 1,
-        programItemId: 26,
+        programItemId: 2,
         num_purchased: 5,
         dollars_spent: 75,
         createdAt: new Date(),
@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         userId: 1,
-        programItemId: 31,
+        programItemId: 4,
         num_purchased: 5,
         dollars_spent: 25,
         createdAt: new Date(),

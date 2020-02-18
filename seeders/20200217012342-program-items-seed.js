@@ -5,6 +5,7 @@ module.exports = {
       return queryInterface.bulkInsert('programItems', [{
         name: 'diaper',
         goal_num: 500,
+        cost: .25,
         url: 'https://www.amazon.com/s?k=diapers',
         description: 'all sizes',
         programId: 10,
@@ -14,6 +15,7 @@ module.exports = {
       {
         name: 'baby wipes',
         goal_num: 500,
+        cost: 5.00,
         url: 'https://www.amazon.com/s?k=babywipes',
         description: 'non-scented',
         programId: 10,
@@ -23,6 +25,7 @@ module.exports = {
       {
         name: 'baby powder',
         goal_num: 200,
+        cost: 5.00,
         url: 'https://www.amazon.com/s?k=babypowder',
         description: '12oz bottles',
         programId: 10,
@@ -32,6 +35,7 @@ module.exports = {
       {
         name: 'pencil packs',
         goal_num: 1000,
+        cost: 5.00,
         url: 'https://www.amazon.com/s?k=pencils',
         description: 'regular no. 2',
         programId: 11,
@@ -41,6 +45,7 @@ module.exports = {
       {
         name: 'expo marker packs',
         goal_num: 300,
+        cost: 8.00,
         url: 'https://www.amazon.com/s?k=expo+markers',
         description: 'all colors and sizes',
         programId: 11,
@@ -50,6 +55,7 @@ module.exports = {
       {
         name: '5-ring notebooks',
         goal_num: 600,
+        cost: 9.00,
         url: 'https://www.amazon.com/s?k=notebooks',
         description: 'lined paper',
         programId: 11,
@@ -59,6 +65,7 @@ module.exports = {
       {
         name: 'Pairs of Socks - size M',
         goal_num: 600,
+        cost: 10.00,
         url: 'https://www.amazon.com/s?k=socks',
         description: 'women and men, size medium',
         programId: 12,
@@ -68,6 +75,7 @@ module.exports = {
       {
         name: 'Childrens Coats',
         goal_num: 600,
+        cost: 35.00,
         url: 'https://www.amazon.com/s?k=child+coat',
         description: 'girl or boy size sm, m, l',
         programId: 12,
@@ -77,6 +85,7 @@ module.exports = {
       {
         name: 'Women\'s shorts',
         goal_num: 200,
+        cost: 25.00,
         url: 'https://www.amazon.com/s?k=womens+shorts',
         description: 'all sizes',
         programId: 12,
@@ -86,6 +95,7 @@ module.exports = {
       {
         name: 'Men\'s shorts',
         goal_num: 200,
+        cost: 20.00,
         url: 'https://www.amazon.com/s?k=mens+shorts',
         description: 'all sizes',
         programId: 12,
@@ -95,6 +105,7 @@ module.exports = {
       {
         name: 'Sandals',
         goal_num: 500,
+        cost: 15.00,
         url: 'https://www.amazon.com/s?k=sandals',
         description: 'all sizes',
         programId: 12,
@@ -104,6 +115,7 @@ module.exports = {
       {
         name: 'T-shirts',
         goal_num: 1000,
+        cost: 5.00,
         url: 'https://www.amazon.com/s?k=tshirts',
         description: 'all sizes, men and women',
         programId: 12,

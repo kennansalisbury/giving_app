@@ -14,6 +14,9 @@ module.exports = {
       goal_num: {
         type: Sequelize.INTEGER
       },
+      cost: {
+        type: Sequelize.FLOAT
+      },
       url: {
         type: Sequelize.STRING
       },

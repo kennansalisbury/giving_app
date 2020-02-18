@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const programItem = sequelize.define('programItem', {
     name: DataTypes.STRING,
     goal_num: DataTypes.INTEGER,
+    cost: DataTypes.FLOAT,
     url: DataTypes.STRING,
     description: DataTypes.TEXT,
     programId: DataTypes.INTEGER
