@@ -30,7 +30,7 @@ router.post('/giver', (req, res) => {
                 )
                 .then(result => {
                     console.log(`Found and updated ${result}`)
-                    res.send({result})
+                    res.send(result)
 
                 })
                 .catch(err => {
@@ -40,7 +40,7 @@ router.post('/giver', (req, res) => {
             //otherwise (if created), confirm item created
             } else {
                 console.log('New item created', i)
-                res.send({i})
+                res.send(i)
             }
         } )
         .catch(err => {
