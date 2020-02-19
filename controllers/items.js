@@ -6,13 +6,6 @@ let jwt = require('jsonwebtoken')
 
 router.post('/giver', (req, res) => {
 
-    // res.send(req.body)
-
-    // createdOrUpdated = []
-    
-    // //for each element in data posted, find or create
-    // req.body.forEach(item => {
-         
         db.giverItem.findOrCreate({
             //look to see if there is another giveritem in the database with the same programItemId AND userId
             where: { programItemId: req.body.programItemId, userId: req.body.userId },
@@ -55,9 +48,6 @@ router.post('/giver', (req, res) => {
             res.status(500).send({message: `Database error when looking for item`})
         })
 
-    // })
-
-    // return res.send(createdOrUpdated)
 
 })
 
