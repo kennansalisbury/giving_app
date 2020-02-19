@@ -37,22 +37,22 @@ router.post('/giver', (req, res) => {
                 )
                 .then(result => {
                     console.log(`Found and updated ${result}`)
-                    res.send(`Found and updated ${result}`)
+                    res.send({result})
 
                 })
                 .catch(err => {
                     console.log(err)
-                    res.status(500).send({message: 'Error updating item', i})
+                    res.status(500).send({message: 'Error updating item'})
                 })
             //otherwise (if created), confirm item created
             } else {
                 console.log('New item created', i)
-                res.send(`New item created: ${i}`)
+                res.send({i})
             }
         } )
         .catch(err => {
             console.log(err)
-            res.status(500).send({message: `Database error when looking for item with programItemId: ${item.programItemId}`})
+            res.status(500).send({message: `Database error when looking for item`})
         })
 
     // })
