@@ -3,7 +3,6 @@ let router = require('express').Router()
 let db = require('../models')
 let jwt = require('jsonwebtoken')
 
-
 router.post('/giver', (req, res) => {
 
         db.giverItem.findOrCreate({

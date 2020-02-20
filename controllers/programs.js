@@ -18,7 +18,7 @@ router.get('/:userid', (req, res) => {
                 include: [
                     {
                         model: db.giverItem,
-                        attributes: ['num_purchased']
+                        attributes: ['num_purchased', ['userId', 'usd']]
                     }
                     
                 ]
