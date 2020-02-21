@@ -29,6 +29,7 @@ app.use('/items', expressJwt({ // makes private
 // app.use('/account', expressJwt({ // makes private
 //     secret: process.env.JWT_SECRET 
 //   }), require('./controllers/account'))
+app.use('/account', require('./controllers/account'))
 
 //Catch-all/error route
 app.get('*', (req, res) => {
