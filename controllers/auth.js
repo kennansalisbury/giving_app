@@ -65,7 +65,7 @@ router.post('/signup', (req, res) => {
           }
           else {
             console.log('Error creating user', err)
-            res.status(500).send({message: 'Error creating user' })
+            res.status(500).send({message: err.message })
           }
     })
     
