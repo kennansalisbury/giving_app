@@ -18,14 +18,14 @@ app.use(cors())
 
 // Controllers
 app.use('/auth', require('./controllers/auth'))
-// app.use('/programs', expressJwt({ // makes private
-//     secret: process.env.JWT_SECRET 
-//   }), require('./controllers/programs'))
-  app.use('/programs', require('./controllers/programs'))
-// app.use('/items', expressJwt({ // makes private
-//     secret: process.env.JWT_SECRET 
-//   }), require('./controllers/items'))
-app.use('/items', require('./controllers/items'))
+app.use('/programs', expressJwt({ // makes private
+    secret: process.env.JWT_SECRET 
+  }), require('./controllers/programs'))
+  // app.use('/programs', require('./controllers/programs'))
+app.use('/items', expressJwt({ // makes private
+    secret: process.env.JWT_SECRET 
+  }), require('./controllers/items'))
+// app.use('/items', require('./controllers/items'))
 // app.use('/account', expressJwt({ // makes private
 //     secret: process.env.JWT_SECRET 
 //   }), require('./controllers/account'))
