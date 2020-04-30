@@ -31,6 +31,11 @@ app.use('/items', expressJwt({ // makes private
 //   }), require('./controllers/account'))
 app.use('/account', require('./controllers/account'))
 
+//Home route
+app.get('/', (req, res) => {
+  res.send({message: 'Server running'})
+})
+
 //Catch-all/error route
 app.get('*', (req, res) => {
     res.status(404).send({ message: 'Not Found' })

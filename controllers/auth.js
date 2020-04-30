@@ -3,8 +3,6 @@ let router = require('express').Router()
 let db = require('../models')
 let jwt = require('jsonwebtoken')
 
-// Define routes
-
 // POST /auth/login (find and validate user; send token)
 router.post('/login', (req, res) => {
     //Find the user, check if existing
