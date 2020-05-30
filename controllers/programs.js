@@ -1,9 +1,20 @@
 require('dotenv').config()
 let router = require('express').Router()
 let db = require('../models')
-let jwt = require('jsonwebtoken')
 
-//get all data for donor needed at app level
+// POST /program - create new program
+router.post('/', (req, res) => {
+    db.program.create(req.body)
+    .then(program => {
+        res.send(program)
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).send({message: 'Server Error'})
+    })
+})
+
+//get all data on programs needed at app level for donor to view
 router.get('/:userid', (req, res) => {
     //find all programs
         //include organization & programItem details
